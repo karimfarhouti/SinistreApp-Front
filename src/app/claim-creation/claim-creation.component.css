@@ -1,0 +1,24 @@
+.claim-form {
+  display: block;
+  height: fit-content;
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+}
+
+.form-group {
+  margin-top: 25px;
+}
+
+.form-group label {
+  margin-right: 10px;
+}
+
+.form-group input,select {
+  width: 300px;
+  display: inline;
+}
+
+#create-btn {
+  margin: 20px auto auto;
+}
