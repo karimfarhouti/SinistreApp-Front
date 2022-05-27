@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ClaimService} from "../services/claim.service";
+import {Claim} from "../models/claim";
 
 @Component({
   selector: 'app-claim-list',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClaimListComponent implements OnInit {
 
-  constructor() { }
+  claimList: Claim[] = [];
 
-  ngOnInit(): void {
+  constructor(private claimService: ClaimService,
+              private modalService:ModalS) {
   }
 
+  ngOnInit(): void {
+    this.getAll();
+  }
+
+
+  getAll(): void {
+    this.claimService.getAll()
+      .subscribe(data => {
+        this.claimList = data;
+      })
+  }
+
+  open(deleteModal:any) {
+
+  }
 }

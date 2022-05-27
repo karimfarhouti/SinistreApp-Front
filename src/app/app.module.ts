@@ -8,20 +8,22 @@ import {ClaimListComponent} from './claim-list/claim-list.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
+import { ClaimEditComponent } from './claim-edit/claim-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClaimCreationComponent,
     ClaimDetailsComponent,
-    ClaimListComponent
+    ClaimListComponent,
+    ClaimEditComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

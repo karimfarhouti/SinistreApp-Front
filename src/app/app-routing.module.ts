@@ -3,8 +3,8 @@ import {Routes, RouterModule} from '@angular/router';
 import {ClaimListComponent} from "./claim-list/claim-list.component";
 import {ClaimCreationComponent} from "./claim-creation/claim-creation.component";
 import {ClaimDetailsComponent} from "./claim-details/claim-details.component";
+import {ClaimEditComponent} from "./claim-edit/claim-edit.component";
 
-//This is my case
 const routes: Routes = [
   {
     path: 'claims',
@@ -19,6 +19,11 @@ const routes: Routes = [
   {
     path: 'claim-details/:id',
     component: ClaimDetailsComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'claim-edit/:id',
+    component: ClaimEditComponent,
     pathMatch: 'full'
   },
   {
