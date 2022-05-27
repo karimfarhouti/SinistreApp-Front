@@ -22,6 +22,10 @@ export class ClaimService {
     return this.http.put(this.API_URL + "claims", claimDTO);
   }
 
+  deleteClaim(claimId?: number): Observable<any> {
+    return this.http.delete(this.API_URL + "claims/" + claimId);
+  }
+
   getById(claimId: string): Observable<Claim> {
     return this.http.get<Claim>(this.API_URL + "claim/" + claimId);
   }
