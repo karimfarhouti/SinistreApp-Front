@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {ClaimDto} from "../dtos/claim-dto";
 import {ClaimService} from "../services/claim.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-claim-creation',
@@ -25,7 +26,9 @@ export class ClaimCreationComponent implements OnInit {
     }, {updateOn: 'submit'}
   )
 
-  constructor(private formBuilder: FormBuilder, private claimService: ClaimService) {
+  constructor(private formBuilder: FormBuilder,
+              private claimService: ClaimService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -55,6 +58,6 @@ export class ClaimCreationComponent implements OnInit {
     claimDTO.contractVehicleImmat = contractVehicleImmat;
 
     this.claimService.createClaim(claimDTO)
-      .subscribe();
+      .subscribe(data => this.router.navigate(['/claims']));
   }
 }
