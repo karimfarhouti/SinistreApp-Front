@@ -7,6 +7,7 @@ import {ClaimDetailsComponent} from './claim-details/claim-details.component';
 import {ClaimListComponent} from './claim-list/claim-list.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
