@@ -3,21 +3,29 @@
   height: fit-content;
   width: fit-content;
   margin: auto;
-  text-align: center;
 }
 
 .form-group {
   margin-top: 25px;
 }
 
-.form-group label {
-  margin-right: 10px;
+.form-group input {
+  margin-top: 5px;
 }
 
-.form-group input,select {
-  width: 300px;
-  display: inline;
+.form-group label {
+  font-weight: bolder;
 }
+
+.form-group input, select {
+  width: 300px;
+}
+
+.form-group small {
+  display: block;
+  width: fit-content;
+}
+
 
 #create-btn {
   margin: 20px auto auto;

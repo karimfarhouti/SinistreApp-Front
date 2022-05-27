@@ -10,7 +10,7 @@ import {ClaimService} from "../services/claim.service";
 })
 export class ClaimCreationComponent implements OnInit {
 
-  isSuccessfull = false;
+  isFormSubmitted = false;
 
   createClaimForm = this.formBuilder.group({
       claimNumber: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/), Validators.minLength(1)]],
@@ -22,7 +22,7 @@ export class ClaimCreationComponent implements OnInit {
       contractEndDate: ['', [Validators.required]],
       contractAssuredName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       contractVehicleImmat: ['', [Validators.required, Validators.minLength(7), Validators.pattern(/^[0-9]\d*$/)]]
-    }
+    }, {updateOn: 'submit'}
   )
 
   constructor(private formBuilder: FormBuilder, private claimService: ClaimService) {
@@ -32,6 +32,7 @@ export class ClaimCreationComponent implements OnInit {
   }
 
   createClaim(): void {
+    this.isFormSubmitted = true;
     const claimNumber = this.createClaimForm.get(['claimNumber'])?.value;
     const claimAccidentDate = this.createClaimForm.get(['claimAccidentDate'])?.value;
     const claimCreationDate = this.createClaimForm.get(['claimCreationDate'])?.value;
@@ -54,10 +55,6 @@ export class ClaimCreationComponent implements OnInit {
     claimDTO.contractVehicleImmat = contractVehicleImmat;
 
     this.claimService.createClaim(claimDTO)
-      .subscribe(data => {
-        this.isSuccessfull = true;
-      }, error => {
-        console.log(error.errorMessage())
-      })
+      .subscribe();
   }
 }
