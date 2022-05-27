@@ -1,24 +1,37 @@
-<form class="claim-form" name="claim-form" role="form" (ngSubmit)="createClaim()" [formGroup]="createClaimForm">
+<form class="claim-form" autocomplete="off" name="claim-form" role="form" (ngSubmit)="createClaim()"
+      [formGroup]="createClaimForm">
 
   <div class="form-group">
     <label for="claim-number">Numéro sinistre:</label>
     <input class="form-control" id="claim-number" type="text" formControlName="claimNumber">
+    <small *ngIf="isFormSubmitted && createClaimForm.get('claimNumber')?.errors?.['required']"
+           class="form-text text-danger">
+      Ce champs est requis.
+    </small>
   </div>
 
   <div class="form-group">
     <label for="claim-accident-date">Date accident:</label>
     <input class="form-control" id="claim-accident-date" type="date" formControlName="claimAccidentDate">
+    <small *ngIf="isFormSubmitted && createClaimForm.get('claimAccidentDate')?.errors?.['required']"
+           class="form-text text-danger">
+      Ce champs est requis.
+    </small>
   </div>
 
   <div class="form-group">
     <label for="claim-creation-date">Date création sinistre:</label>
     <input class="form-control" id="claim-creation-date" type="date" formControlName="claimCreationDate">
+    <small *ngIf="isFormSubmitted && createClaimForm.get('claimCreationDate')?.errors?.['required']"
+           class="form-text text-danger">
+      Ce champs est requis.
+    </small>
   </div>
 
   <div class="form-group">
     <label for="claim-status">Etat sinistre:</label>
     <select class="form-control" id="claim-status" formControlName="claimStatus">
-      <option value="OPEN">Ouvert</option>
+      <option value="OPEN" [selected]="true">Ouvert</option>
       <option value="EXPERTISE">Expertise</option>
       <option value="CLOSED">Fermé</option>
     </select>
@@ -27,26 +40,46 @@
   <div class="form-group">
     <label for="contract-number">Numéro contrat:</label>
     <input class="form-control" id="contract-number" type="text" formControlName="contractNumber">
+    <small *ngIf="isFormSubmitted && createClaimForm.get('contractNumber')?.errors?.['required']"
+           class="form-text text-danger">
+      Ce champs est requis.
+    </small>
   </div>
 
   <div class="form-group">
     <label for="contract-start-date">Date début contrat:</label>
     <input class="form-control" id="contract-start-date" type="date" formControlName="contractStartDate">
+    <small *ngIf="isFormSubmitted && createClaimForm.get('contractStartDate')?.errors?.['required']"
+           class="form-text text-danger">
+      Ce champs est requis.
+    </small>
   </div>
 
   <div class="form-group">
     <label for="contract-end-date">Date fin contrat:</label>
     <input class="form-control" id="contract-end-date" type="date" formControlName="contractEndDate">
+    <small *ngIf="isFormSubmitted && createClaimForm.get('contractEndDate')?.errors?.['required']"
+           class="form-text text-danger">
+      Ce champs est requis.
+    </small>
   </div>
 
   <div class="form-group">
     <label for="contract-assured-name">Nom assuré:</label>
     <input class="form-control" id="contract-assured-name" type="text" formControlName="contractAssuredName">
+    <small *ngIf="isFormSubmitted && createClaimForm.get('contractAssuredName')?.errors?.['required']"
+           class="form-text text-danger">
+      Ce champs est requis.
+    </small>
   </div>
 
   <div class="form-group">
     <label for="contract-vehicle-immat">Immatriculation véhicle:</label>
     <input class="form-control" id="contract-vehicle-immat" type="text" formControlName="contractVehicleImmat">
+    <small *ngIf="isFormSubmitted && createClaimForm.get('contractVehicleImmat')?.errors?.['required']"
+           class="form-text text-danger">
+      Ce champs est requis.
+    </small>
   </div>
 
   <button id="create-btn" class="btn btn-primary btn-md" type="submit">Create</button>
