@@ -1,1 +1,45 @@
-<p>claim-list works!</p>
+<div class="wrapper" >
+
+  <h1 style="text-align: center">Liste des sinistres</h1>
+
+  <table class="table table-hover w-75 ">
+    <thead>
+    <tr>
+      <th scope="col">Numéro</th>
+      <th scope="col">Date accident</th>
+      <th scope="col">Date création</th>
+      <th scope="col">Etat</th>
+      <th scope="col" style="text-align: center"><a [routerLink]="['/claim-creation']">Ajouter un sinistre</a> </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let claim of claimList;let i = index">
+      <td>{{claim.number}}</td>
+      <td>{{claim.accidentDate}}</td>
+      <td>{{claim.creationDate}}</td>
+      <td>{{claim.status}}</td>
+      <td style="text-align: center">
+        <button [routerLink]="['/claim-edit',claim.id]" class="btn btn-outline-primary btn-sm">Modifier</button>
+        <button class="btn btn-outline-danger btn-sm" (click)="open(deleteModal)">Supprimer</button>
+        <button class="btn btn-outline-info btn-sm">Details</button>
+      </td>
+
+    </tr>
+  </table>
+
+</div>
+
+<ng-template #deleteModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Suppression</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Confirmer la suppression
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>

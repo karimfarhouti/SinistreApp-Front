@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {ClaimDto} from "../dtos/claim-dto";
 import {ClaimService} from "../services/claim.service";
@@ -11,18 +11,20 @@ import {Router} from "@angular/router";
 })
 export class ClaimCreationComponent implements OnInit {
 
+  @Input() claimDTO?: ClaimDto;
+
   isFormSubmitted = false;
 
   createClaimForm = this.formBuilder.group({
       claimNumber: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/), Validators.minLength(1)]],
-      claimAccidentDate: ['', [Validators.required]],
-      claimCreationDate: ['', [Validators.required]],
-      claimStatus: ['', [Validators.required]],
-      contractNumber: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/), Validators.minLength(1)]],
-      contractStartDate: ['', [Validators.required]],
-      contractEndDate: ['', [Validators.required]],
-      contractAssuredName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-      contractVehicleImmat: ['', [Validators.required, Validators.minLength(7), Validators.pattern(/^[0-9]\d*$/)]]
+      claimAccidentDate: [this.claimDTO ? this.claimDTO.claimAccidentDate : '', [Validators.required]],
+      claimCreationDate: [this.claimDTO ? this.claimDTO.claimCreationDate : '', [Validators.required]],
+      claimStatus: [this.claimDTO ? this.claimDTO.claimStatus : '', [Validators.required]],
+      contractNumber: [this.claimDTO ? this.claimDTO.contractNumber : '', [Validators.required, Validators.pattern(/^[0-9]\d*$/), Validators.minLength(1)]],
+      contractStartDate: [this.claimDTO ? this.claimDTO.contractStartDate : '', [Validators.required]],
+      contractEndDate: [this.claimDTO ? this.claimDTO.contractEndDate : '', [Validators.required]],
+      contractAssuredName: [this.claimDTO ? this.claimDTO.contractAssuredName : '', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      contractVehicleImmat: [this.claimDTO ? this.claimDTO.contractVehicleImmat : '', [Validators.required, Validators.minLength(7), Validators.pattern(/^[0-9]\d*$/)]]
     }, {updateOn: 'submit'}
   )
 
@@ -32,10 +34,28 @@ export class ClaimCreationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.createClaimForm.patchValue(this.claimDTO!);
   }
 
-  createClaim(): void {
+  createOrUpdateClaim(): void {
     this.isFormSubmitted = true;
+
+    const claimDTO = this.createDtoFromFormValues();
+    claimDTO.claimId = this.claimDTO?.claimId;
+    claimDTO.contractId = this.claimDTO?.contractId;
+
+    if (this.claimDTO === null || this.claimDTO === undefined) {
+      this.claimService.createClaim(claimDTO)
+        .subscribe(data => this.router.navigate(['/claims']));
+      console.log('creating new claim..');
+    } else {
+      this.claimService.updateClaim(claimDTO)
+        .subscribe(data => this.router.navigate(['/claims']));
+      console.log('updating claim..');
+    }
+  }
+
+  private createDtoFromFormValues(): ClaimDto {
     const claimNumber = this.createClaimForm.get(['claimNumber'])?.value;
     const claimAccidentDate = this.createClaimForm.get(['claimAccidentDate'])?.value;
     const claimCreationDate = this.createClaimForm.get(['claimCreationDate'])?.value;
@@ -57,7 +77,6 @@ export class ClaimCreationComponent implements OnInit {
     claimDTO.contractAssuredName = contractAssuredName;
     claimDTO.contractVehicleImmat = contractVehicleImmat;
 
-    this.claimService.createClaim(claimDTO)
-      .subscribe(data => this.router.navigate(['/claims']));
+    return claimDTO;
   }
 }

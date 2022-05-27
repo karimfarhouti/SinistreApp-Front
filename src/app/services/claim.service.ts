@@ -9,11 +9,24 @@ import {Claim} from "../models/claim";
 })
 export class ClaimService {
 
-  API_URL: string = "http://localhost:8080/api";
+  API_URL: string = "http://localhost:8080/api/";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   createClaim(claimDTO: ClaimDto): Observable<Claim> {
-    return this.http.post(this.API_URL + "/claims", claimDTO);
+    return this.http.post<Claim>(this.API_URL + "claims", claimDTO);
+  }
+
+  updateClaim(claimDTO: ClaimDto): Observable<Claim> {
+    return this.http.put(this.API_URL + "claims", claimDTO);
+  }
+
+  getById(claimId: string): Observable<Claim> {
+    return this.http.get<Claim>(this.API_URL + "claim/" + claimId);
+  }
+
+  getAll(): Observable<Claim[]> {
+    return this.http.get<Claim[]>(this.API_URL + "claims");
   }
 }

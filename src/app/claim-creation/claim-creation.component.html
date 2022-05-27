@@ -1,4 +1,4 @@
-<form class="claim-form" autocomplete="off" name="claim-form" role="form" (ngSubmit)="createClaim()"
+<form class="claim-form" autocomplete="off" name="claim-form" role="form" (ngSubmit)="createOrUpdateClaim()"
       [formGroup]="createClaimForm">
 
   <div class="form-group">
@@ -31,7 +31,7 @@
   <div class="form-group">
     <label for="claim-status">Etat sinistre:</label>
     <select class="form-control" id="claim-status" formControlName="claimStatus">
-      <option value="OPEN" selected="true">Ouvert</option>
+      <option value="OPEN">Ouvert</option>
       <option value="EXPERTISE">Expertise</option>
       <option value="CLOSED">Fermé</option>
     </select>
