@@ -9,6 +9,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import { ClaimEditComponent } from './claim-edit/claim-edit.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { ImageUploadComponent } from './image-upload/image-upload.component';
+import { ClaimStatusPipe } from './pipes/claim-status.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import { ClaimEditComponent } from './claim-edit/claim-edit.component';
     ClaimCreationComponent,
     ClaimDetailsComponent,
     ClaimListComponent,
-    ClaimEditComponent
+    ClaimEditComponent,
+    ImageUploadComponent,
+    ClaimStatusPipe
   ],
   imports: [
     BrowserModule,
@@ -24,6 +29,7 @@ import { ClaimEditComponent } from './claim-edit/claim-edit.component';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

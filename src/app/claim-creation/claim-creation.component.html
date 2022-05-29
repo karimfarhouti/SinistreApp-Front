@@ -8,6 +8,10 @@
            class="form-text text-danger">
       Ce champs est requis.
     </small>
+    <small *ngIf="isFormSubmitted && createClaimForm.get('claimNumber')?.errors?.['pattern']"
+           class="form-text text-danger">
+      Ce champs est numérique.
+    </small>
   </div>
 
   <div class="form-group">
@@ -35,6 +39,10 @@
       <option value="EXPERTISE">Expertise</option>
       <option value="CLOSED">Fermé</option>
     </select>
+    <small *ngIf="isFormSubmitted && createClaimForm.get('claimStatus')?.errors?.['required']"
+           class="form-text text-danger">
+      Ce champs est requis.
+    </small>
   </div>
 
   <div class="form-group">
@@ -43,6 +51,10 @@
     <small *ngIf="isFormSubmitted && createClaimForm.get('contractNumber')?.errors?.['required']"
            class="form-text text-danger">
       Ce champs est requis.
+    </small>
+    <small *ngIf="isFormSubmitted && createClaimForm.get('contractNumber')?.errors?.['pattern']"
+           class="form-text text-danger">
+      Ce champs est numérique.
     </small>
   </div>
 
@@ -79,6 +91,10 @@
     <small *ngIf="isFormSubmitted && createClaimForm.get('contractVehicleImmat')?.errors?.['required']"
            class="form-text text-danger">
       Ce champs est requis.
+    </small>
+    <small *ngIf="isFormSubmitted && createClaimForm.get('contractVehicleImmat')?.errors?.['pattern']"
+           class="form-text text-danger">
+      Ce champs est numérique.
     </small>
   </div>
 

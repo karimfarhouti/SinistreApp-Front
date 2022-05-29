@@ -1,3 +1,8 @@
-<div *ngIf="isLoaded">
-  <app-claim-creation [claimDTO]="claimDTO"></app-claim-creation>
+<div class="wrapper">
+  <div style="height: fit-content;margin-left:25%;width: fit-content;" *ngIf="isLoaded">
+    <app-claim-creation [claimDTO]="claimDTO"></app-claim-creation>
+  </div>
+  <div class="img-cmp" *ngIf="isLoaded">
+    <app-image-upload [claimDTO]="claimDTO"></app-image-upload>
+  </div>
 </div>

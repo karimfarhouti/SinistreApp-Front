@@ -17,6 +17,7 @@ export class ClaimMapperService {
     claimDTO.claimStatus = claim.status;
     claimDTO.claimCreationDate = claim.creationDate;
     claimDTO.claimAccidentDate = claim.accidentDate;
+    claimDTO.claimImageUrl = claim.imageUrl;
     claimDTO.contractId = claim.contract!.id;
     claimDTO.contractAssuredName = claim.contract!.assuredName;
     claimDTO.contractNumber = claim.contract!.number;
