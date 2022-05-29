@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public static API_URL: string = "http://localhost:8080/api/";
   title='sinistreAppFront';
 }

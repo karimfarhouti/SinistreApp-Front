@@ -14,13 +14,14 @@ export class ClaimCreationComponent implements OnInit {
   @Input() claimDTO?: ClaimDto;
 
   isFormSubmitted = false;
+  errorMessage: string | null = null;
 
   createClaimForm = this.formBuilder.group({
-      claimNumber: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/), Validators.minLength(1)]],
+      claimNumber: ['', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
       claimAccidentDate: [this.claimDTO ? this.claimDTO.claimAccidentDate : '', [Validators.required]],
       claimCreationDate: [this.claimDTO ? this.claimDTO.claimCreationDate : '', [Validators.required]],
       claimStatus: [this.claimDTO ? this.claimDTO.claimStatus : '', [Validators.required]],
-      contractNumber: [this.claimDTO ? this.claimDTO.contractNumber : '', [Validators.required, Validators.pattern(/^[0-9]\d*$/), Validators.minLength(1)]],
+      contractNumber: [this.claimDTO ? this.claimDTO.contractNumber : '', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
       contractStartDate: [this.claimDTO ? this.claimDTO.contractStartDate : '', [Validators.required]],
       contractEndDate: [this.claimDTO ? this.claimDTO.contractEndDate : '', [Validators.required]],
       contractAssuredName: [this.claimDTO ? this.claimDTO.contractAssuredName : '', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
@@ -39,19 +40,18 @@ export class ClaimCreationComponent implements OnInit {
 
   createOrUpdateClaim(): void {
     this.isFormSubmitted = true;
+    if (this.createClaimForm.valid) {
+      const claimDTO = this.createDtoFromFormValues();
+      claimDTO.claimId = this.claimDTO?.claimId;
+      claimDTO.contractId = this.claimDTO?.contractId;
 
-    const claimDTO = this.createDtoFromFormValues();
-    claimDTO.claimId = this.claimDTO?.claimId;
-    claimDTO.contractId = this.claimDTO?.contractId;
-
-    if (this.claimDTO === null || this.claimDTO === undefined) {
-      this.claimService.createClaim(claimDTO)
-        .subscribe(data => this.router.navigate(['/claims']));
-      console.log('creating new claim..');
-    } else {
-      this.claimService.updateClaim(claimDTO)
-        .subscribe(data => this.router.navigate(['/claims']));
-      console.log('updating claim..');
+      if (this.claimDTO === null || this.claimDTO === undefined) {
+        this.claimService.createClaim(claimDTO)
+          .subscribe(data => this.router.navigate(['/claims']));
+      } else {
+        this.claimService.updateClaim(claimDTO)
+          .subscribe(data => this.router.navigate(['/claims']));
+      }
     }
   }
 
