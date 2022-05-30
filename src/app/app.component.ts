@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public static API_URL: string = "http://localhost:8080/api/";
+  public static noContentImagePath: string = "/assets/no-content-image.png";
   title='sinistreAppFront';
 }

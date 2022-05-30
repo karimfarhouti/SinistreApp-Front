@@ -21,7 +21,7 @@ import { ClaimStatusPipe } from './pipes/claim-status.pipe';
     ClaimListComponent,
     ClaimEditComponent,
     ImageUploadComponent,
-    ClaimStatusPipe
+    ClaimStatusPipe,
   ],
   imports: [
     BrowserModule,

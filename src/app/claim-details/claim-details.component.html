@@ -1,1 +1,46 @@
-<p>claim-details works!</p>
+<div class="wrapper">
+  <div class="claim-infos">
+    <h3 style="margin-bottom: 2rem">Sinistre </h3>
+    <div class="form-check">
+      <label style="font-weight: 500" for="claimNumber">N° Sinistre:</label>
+      <p id="claimNumber">{{claim?.number}}</p>
+    </div>
+    <div class="form-check">
+      <label style="font-weight: 500" for="accidentDate">Date accident:</label>
+      <p id="accidentDate">{{claim?.accidentDate}}</p>
+    </div>
+    <div class="form-check">
+      <label style="font-weight: 500" for="creationDate">Date création:</label>
+      <p id="creationDate">{{claim?.creationDate}}</p>
+    </div>
+    <div class="form-check">
+      <label style="font-weight: 500" for="claimStatus">Etat:</label>
+      <p id="claimStatus">{{claim?.status | claimStatus}}</p>
+    </div>
+  </div>
+  <div class="contract-infos">
+    <h3 style="margin-bottom: 2rem">Contrat: </h3>
+    <div class="form-check">
+      <label style="font-weight: 500" for="contractNumber">N° Contrat:</label>
+      <p id="contractNumber">{{claim?.contract?.number}}</p>
+    </div>
+
+    <div class="form-check">
+      <label style="font-weight: 500" for="contractStartDate">Date début:</label>
+      <p id="contractStartDate">{{claim?.contract?.startDate}}</p>
+    </div>
+    <div class="form-check">
+      <label style="font-weight: 500" for="contractEndDate">Date fin:</label>
+      <p id="contractEndDate">{{claim?.contract?.endDate}}</p>
+    </div>
+    <div class="form-check">
+      <label style="font-weight: 500" for="contractAssuredName">Nom assuré:</label>
+      <p id="contractAssuredName">{{claim?.contract?.assuredName}}</p>
+    </div>
+    <div class="form-check">
+      <label style="font-weight: 500" for="contractVehicleImmat">Immatriculation véhicule:</label>
+      <p id="contractVehicleImmat">{{claim?.contract?.vehicleImmat}}</p>
+    </div>
+  </div>
+    <img [src]=imageUrl width="400px" height="400px" style="margin-bottom: 0">
+</div>

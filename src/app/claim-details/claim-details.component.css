@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  border: 1px solid gray;
+}
+
+.claim-infos ,.contract-infos {
+  display: block;
+  width: 300px;
+  height: 400px;
+  text-align: center;
+}
+
+.form-check{
+  margin-left: 5px;
+  padding-left: 0;
+  font-size: large;
+}
+
+.form-check p{
+  display: inline;
+  margin-left: 5px;
+}
