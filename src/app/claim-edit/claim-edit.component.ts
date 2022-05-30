@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ClaimService} from "../services/claim.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Claim} from "../models/claim";
 import {ClaimDto} from "../dtos/claim-dto";
 import {ClaimMapperService} from "../services/claim-mapper.service";
 
@@ -14,6 +13,7 @@ export class ClaimEditComponent implements OnInit {
 
   claimDTO: ClaimDto = new ClaimDto();
   isLoaded: boolean = false;
+  id: any = null;
 
   constructor(private claimService: ClaimService,
               private mapper: ClaimMapperService,
@@ -22,11 +22,11 @@ export class ClaimEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.getClaimByNumber(id!);
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.getClaimById(this.id!);
   }
 
-  getClaimByNumber(id: string) {
+  getClaimById(id: number) {
     this.claimService.getById(id)
       .subscribe(data => {
         this.claimDTO = this.mapper.toDTO(data);

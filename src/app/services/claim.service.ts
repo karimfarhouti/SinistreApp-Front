@@ -25,7 +25,7 @@ export class ClaimService {
     return this.http.delete(AppComponent.API_URL + "claims/" + claimId);
   }
 
-  getById(claimId: string): Observable<Claim> {
+  getById(claimId: number): Observable<Claim> {
     return this.http.get<Claim>(AppComponent.API_URL + "claim/" + claimId);
   }
 

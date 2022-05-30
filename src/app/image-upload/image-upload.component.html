@@ -2,13 +2,13 @@
   <img class="mb-4" [src]=imageUrl width="350px" height="350px">
   <input class="form-control" type="file" id="claimImage" (change)="onChange($event)">
   <div class="form-check-inline>">
-    <button *ngIf="imageUrl===noContentImagePath" (click)="upload()"
+    <button *ngIf="!claimDTO.claimImageUrl" (click)="upload()"
             class="btn btn-outline-primary btn-md my-3">Ajouter
     </button>
-    <button *ngIf="imageUrl!==noContentImagePath" (click)="update()"
+    <button *ngIf="claimDTO.claimImageUrl" (click)="update()"
             class="btn btn-outline-primary btn-md my-3">Modifier
     </button>
-    <button *ngIf="imageUrl!==noContentImagePath" (click)="open(deleteModal)"
+    <button *ngIf="claimDTO.claimImageUrl" (click)="open(deleteModal)"
             class="btn btn-outline-danger btn-md my-3">Supprimer
     </button>
     <ng-template #deleteModal let-modal>

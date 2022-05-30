@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ClaimImageUploadService} from "../services/claim-image-upload.service";
-import {Claim} from "../models/claim";
 import {DomSanitizer} from "@angular/platform-browser";
 import {ClaimDto} from "../dtos/claim-dto";
 import {ClaimMapperService} from "../services/claim-mapper.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-image-upload',
@@ -16,7 +16,6 @@ export class ImageUploadComponent implements OnInit {
   @Input() claimDTO!: ClaimDto;
   file: any = null;
   imageUrl: any = null;
-  noContentImagePath: string = '/assets/no-content-image.png';
   isConfirmClicked = false;
 
   constructor(private claimImageUploadService: ClaimImageUploadService,
@@ -45,7 +44,7 @@ export class ImageUploadComponent implements OnInit {
     }
   }
 
-  update():void{
+  update(): void {
     if (this.file) {
       const formData = new FormData();
       formData.append('claimImage', this.file);
@@ -79,7 +78,7 @@ export class ImageUploadComponent implements OnInit {
           this.createImageFromBlob(data);
         })
     } else {
-      this.imageUrl = this.noContentImagePath;
+      this.imageUrl = AppComponent.noContentImagePath;
     }
   }
 

@@ -25,7 +25,7 @@ export class ClaimCreationComponent implements OnInit {
       contractStartDate: [this.claimDTO ? this.claimDTO.contractStartDate : '', [Validators.required]],
       contractEndDate: [this.claimDTO ? this.claimDTO.contractEndDate : '', [Validators.required]],
       contractAssuredName: [this.claimDTO ? this.claimDTO.contractAssuredName : '', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-      contractVehicleImmat: [this.claimDTO ? this.claimDTO.contractVehicleImmat : '', [Validators.required, Validators.minLength(7), Validators.pattern(/^[0-9]\d*$/)]]
+      contractVehicleImmat: [this.claimDTO ? this.claimDTO.contractVehicleImmat : '', [Validators.required, Validators.minLength(3), Validators.pattern(/^[0-9]\d*$/)]]
     }, {updateOn: 'submit'}
   )
 

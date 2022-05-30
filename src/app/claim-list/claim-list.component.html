@@ -21,7 +21,7 @@
       <td style="text-align: center">
         <button [routerLink]="['/claim-edit',claim.id]" class="btn btn-outline-primary btn-sm">Modifier</button>
         <button class="btn btn-outline-danger btn-sm" (click)="open(deleteModal)">Supprimer</button>
-        <button class="btn btn-outline-info btn-sm">Details</button>
+        <button [routerLink]="['/claim-details',claim.id]" class="btn btn-outline-info btn-sm">Details</button>
         <ng-template #deleteModal let-modal>
           <div class="modal-header">
             <h4 class="modal-title" id="modal-basic-title">Suppression</h4>
@@ -34,7 +34,9 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Annuler</button>
-            <button type="button" class="btn btn-outline-dark" [disabled]="isConfirmClicked" (click)="deleteClaim(claim?.id)">Confirmer</button>
+            <button type="button" class="btn btn-outline-dark" [disabled]="isConfirmClicked"
+                    (click)="deleteClaim(claim?.id)">Confirmer
+            </button>
           </div>
         </ng-template>
       </td>
