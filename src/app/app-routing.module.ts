@@ -4,8 +4,15 @@ import {ClaimListComponent} from "./claim-list/claim-list.component";
 import {ClaimCreationComponent} from "./claim-creation/claim-creation.component";
 import {ClaimDetailsComponent} from "./claim-details/claim-details.component";
 import {ClaimEditComponent} from "./claim-edit/claim-edit.component";
+import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
+
+  {
+    path: 'login',
+    component: LoginComponent,
+    pathMatch: 'full'
+  },
   {
     path: 'claims',
     component: ClaimListComponent,
@@ -28,7 +35,8 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: ClaimListComponent
+    component: LoginComponent,
+    pathMatch: 'full'
   }
 ];
 

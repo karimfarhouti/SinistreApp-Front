@@ -6,12 +6,14 @@ import {ClaimCreationComponent} from './claim-creation/claim-creation.component'
 import {ClaimDetailsComponent} from './claim-details/claim-details.component';
 import {ClaimListComponent} from './claim-list/claim-list.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import { ClaimEditComponent } from './claim-edit/claim-edit.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { ClaimStatusPipe } from './pipes/claim-status.pipe';
+import { LoginComponent } from './login/login.component';
+import {HttpInterceptorServiceService} from "./security/services/http-interceptor-service.service";
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { ClaimStatusPipe } from './pipes/claim-status.pipe';
     ClaimEditComponent,
     ImageUploadComponent,
     ClaimStatusPipe,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { ClaimStatusPipe } from './pipes/claim-status.pipe';
     AppRoutingModule,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorServiceService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
