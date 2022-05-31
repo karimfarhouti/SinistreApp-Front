@@ -47,10 +47,10 @@ export class ClaimCreationComponent implements OnInit {
 
       if (this.claimDTO === null || this.claimDTO === undefined) {
         this.claimService.createClaim(claimDTO)
-          .subscribe(data => this.router.navigate(['/claims']));
+          .subscribe(data => this.router.navigate(['/home']));
       } else {
         this.claimService.updateClaim(claimDTO)
-          .subscribe(data => this.router.navigate(['/claims']));
+          .subscribe(data => this.router.navigate(['/home']));
       }
     }
   }

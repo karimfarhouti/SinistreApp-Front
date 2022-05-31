@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
           this.authenticationService.password = this.userDAO.password;
           this.authenticationService.createBasicAuthToken(this.authenticationService.login!,this.authenticationService.password!);
           this.authenticationService.registerSuccessfulLogin(this.authenticationService.login!,this.authenticationService.password!)
-          this.router.navigate(['/claims']);
+          this.router.navigate(['/home']);
         },error => {
           this.errorMessage = "nom d\'utilisateur ou mot de passe erroné";
         })
