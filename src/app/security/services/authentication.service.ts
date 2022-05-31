@@ -13,7 +13,7 @@ export class AuthenticationService {
   private USER_NAME_SESSION_ATTRIBUTE_NAME: string = "logged_user";
   login?: string | null = null;
   password?: string | null = null;
-  BASE_64_KEY='auth_key';
+  BASE_64_KEY = 'auth_key';
 
   constructor(private http: HttpClient) {
   }
@@ -39,6 +39,7 @@ export class AuthenticationService {
 
   logout() {
     sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    sessionStorage.removeItem(this.BASE_64_KEY);
     this.login = null;
     this.password = null;
   }
