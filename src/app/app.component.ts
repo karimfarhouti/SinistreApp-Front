@@ -12,12 +12,6 @@ export class AppComponent {
   public static noContentImagePath: string = "/assets/no-content-image.png";
   title = 'sinistreAppFront';
 
-  constructor(private authService: AuthenticationService,
-              private router: Router) {
-  }
+  constructor() {}
 
-  logout(): void {
-    this.authService.logout();
-    this.router.navigate(['/login']);
-  }
 }

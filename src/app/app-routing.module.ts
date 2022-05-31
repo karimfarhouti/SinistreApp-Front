@@ -6,6 +6,7 @@ import {ClaimDetailsComponent} from "./claim-details/claim-details.component";
 import {ClaimEditComponent} from "./claim-edit/claim-edit.component";
 import {LoginComponent} from "./login/login.component";
 import {AuthGuardService} from "./security/services/auth-guard.service";
+import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
 
@@ -15,34 +16,34 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'claims',
-    component: ClaimListComponent,
-    pathMatch: 'full',
-    canActivate: [AuthGuardService]
-  },
-  {
-    path: 'claim-creation',
-    component: ClaimCreationComponent,
-    pathMatch: 'full',
-    canActivate: [AuthGuardService]
-  },
-  {
-    path: 'claim-details/:id',
-    component: ClaimDetailsComponent,
-    pathMatch: 'full',
-    canActivate: [AuthGuardService]
-  },
-  {
-    path: 'claim-edit/:id',
-    component: ClaimEditComponent,
-    pathMatch: 'full',
-    canActivate: [AuthGuardService]
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [AuthGuardService],
+    children: [
+      {
+        path: '',
+        component: ClaimListComponent,
+      },
+      {
+        path: 'claim-creation',
+        component: ClaimCreationComponent,
+      },
+      {
+        path: 'claim-details/:id',
+        component: ClaimDetailsComponent,
+      },
+      {
+        path: 'claim-edit/:id',
+        component: ClaimEditComponent,
+      }
+    ]
   },
   {
     path: '',
     component: LoginComponent,
     pathMatch: 'full',
-  }
+  },
+  // { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({

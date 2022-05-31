@@ -14,6 +14,7 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { ClaimStatusPipe } from './pipes/claim-status.pipe';
 import { LoginComponent } from './login/login.component';
 import {HttpInterceptorServiceService} from "./security/services/http-interceptor-service.service";
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {HttpInterceptorServiceService} from "./security/services/http-intercepto
     ImageUploadComponent,
     ClaimStatusPipe,
     LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import {HttpInterceptorServiceService} from "./security/services/http-intercepto
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorServiceService, multi: true}],

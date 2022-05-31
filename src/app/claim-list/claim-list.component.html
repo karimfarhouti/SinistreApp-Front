@@ -9,7 +9,7 @@
       <th scope="col">Date accident</th>
       <th scope="col">Date création</th>
       <th scope="col">Etat</th>
-      <th scope="col" style="text-align: center"><a [routerLink]="['/claim-creation']">Ajouter un sinistre</a></th>
+      <th scope="col" style="text-align: center"><a [routerLink]="['/home/claim-creation']">Ajouter un sinistre</a></th>
     </tr>
     </thead>
     <tbody>
@@ -19,9 +19,9 @@
       <td>{{claim.creationDate}}</td>
       <td>{{claim.status | claimStatus}}</td>
       <td style="text-align: center">
-        <button [routerLink]="['/claim-edit',claim.id]" class="btn btn-outline-primary btn-sm">Modifier</button>
+        <button [routerLink]="['/home/claim-edit',claim.id]" class="btn btn-outline-primary btn-sm">Modifier</button>
         <button class="btn btn-outline-danger btn-sm" (click)="open(deleteModal)">Supprimer</button>
-        <button [routerLink]="['/claim-details',claim.id]" class="btn btn-outline-info btn-sm">Details</button>
+        <button [routerLink]="['/home/claim-details',claim.id]" class="btn btn-outline-info btn-sm">Details</button>
         <ng-template #deleteModal let-modal>
           <div class="modal-header">
             <h4 class="modal-title" id="modal-basic-title">Suppression</h4>
