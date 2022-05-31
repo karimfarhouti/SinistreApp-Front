@@ -5,6 +5,7 @@ import {ClaimCreationComponent} from "./claim-creation/claim-creation.component"
 import {ClaimDetailsComponent} from "./claim-details/claim-details.component";
 import {ClaimEditComponent} from "./claim-edit/claim-edit.component";
 import {LoginComponent} from "./login/login.component";
+import {AuthGuardService} from "./security/services/auth-guard.service";
 
 const routes: Routes = [
 
@@ -16,27 +17,31 @@ const routes: Routes = [
   {
     path: 'claims',
     component: ClaimListComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthGuardService]
   },
   {
     path: 'claim-creation',
     component: ClaimCreationComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthGuardService]
   },
   {
     path: 'claim-details/:id',
     component: ClaimDetailsComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthGuardService]
   },
   {
     path: 'claim-edit/:id',
     component: ClaimEditComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthGuardService]
   },
   {
     path: '',
     component: LoginComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
   }
 ];
 

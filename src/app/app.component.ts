@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AuthenticationService} from "./security/services/authentication.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -11,5 +12,12 @@ export class AppComponent {
   public static noContentImagePath: string = "/assets/no-content-image.png";
   title = 'sinistreAppFront';
 
-  constructor(private authService: AuthenticationService) {}
+  constructor(private authService: AuthenticationService,
+              private router: Router) {
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }
