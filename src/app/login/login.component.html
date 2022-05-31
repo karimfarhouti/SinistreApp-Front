@@ -1,0 +1,38 @@
+<form class="login-form" role="form" (ngSubmit)="login()" [formGroup]="loginForm">
+  <div class="wrapper">
+    <div class="form-check">
+      <label class="form-label" for="login">Login</label>
+      <input type="text" id="login" class="form-control" formControlName="login"/>
+      <small *ngIf="isFormSubmitted && loginForm.get('login')?.errors?.['required']"
+             class="form-text text-danger">
+        Ce champs est requis.
+      </small>
+      <small
+        *ngIf="isFormSubmitted && (loginForm.get('login')?.errors?.['minlength'] || loginForm.get('login')?.errors?.['maxlength']) "
+        class="form-text text-danger">
+        Ce champs doit être entre 8 et 50 caractères.
+      </small>
+    </div>
+
+    <div class="form-check">
+      <label class="form-label" for="password">Password</label>
+      <input type="password" id="password" class="form-control" formControlName="password"/>
+      <small *ngIf="isFormSubmitted && loginForm.get('password')?.errors?.['required']"
+             class="form-text text-danger">
+        Ce champs est requis.
+      </small>
+      <small
+        *ngIf="isFormSubmitted && (loginForm.get('password')?.errors?.['minlength'] || loginForm.get('password')?.errors?.['maxlength']) "
+        class="form-text text-danger">
+        Ce champs doit être entre 8 et 50 caractères.
+      </small>
+      maxLength
+      <small *ngIf="isFormSubmitted && errorMessage"
+             class="form-text text-danger">
+        {{errorMessage}}
+      </small>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block mb-4">Connexion</button>
+
+</form>

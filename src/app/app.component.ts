@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {AuthenticationService} from "./security/services/authentication.service";
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public static API_URL: string = "http://localhost:8080/api/";
   public static noContentImagePath: string = "/assets/no-content-image.png";
-  title='sinistreAppFront';
+  title = 'sinistreAppFront';
+
+  constructor(private authService: AuthenticationService) {}
 }

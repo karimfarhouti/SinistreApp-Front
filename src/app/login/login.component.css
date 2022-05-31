@@ -1,0 +1,29 @@
+.login-form {
+  width: 350px;
+  height: 350px;
+  margin: auto;
+  margin-top:200px ;
+  text-align: center;
+  border:1px solid gray;
+  border-radius: 5%;
+
+}
+
+.wrapper {
+  margin-top: 50px;
+}
+
+.form-check{
+  margin-bottom: 1rem;
+  padding-left: 0;
+}
+
+.form-check input{
+  width: 300px;
+  margin:auto;
+}
+
+button{
+  margin:auto;
+  margin-top: 10px;
+}

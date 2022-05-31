@@ -92,10 +92,6 @@
            class="form-text text-danger">
       Ce champs est requis.
     </small>
-    <small *ngIf="isFormSubmitted && createClaimForm.get('contractVehicleImmat')?.errors?.['pattern']"
-           class="form-text text-danger">
-      Ce champs est numérique.
-    </small>
   </div>
 
   <button id="create-btn" class="btn btn-primary btn-md" type="submit">Create</button>
