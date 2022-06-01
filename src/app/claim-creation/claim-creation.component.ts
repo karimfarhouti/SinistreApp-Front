@@ -44,7 +44,6 @@ export class ClaimCreationComponent implements OnInit {
       const claimDTO = this.createDtoFromFormValues();
       claimDTO.claimId = this.claimDTO?.claimId;
       claimDTO.contractId = this.claimDTO?.contractId;
-
       if (this.claimDTO === null || this.claimDTO === undefined) {
         this.claimService.createClaim(claimDTO)
           .subscribe(data => this.router.navigate(['/home']));
